@@ -1,0 +1,23 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivekchavan14/LearnX.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vivekchavan14/LearnX/issues"
+  },
+  "homepage": "https://github.com/vivekchavan14/LearnX#readme",
+  "dependencies": {
+    "@chakra-ui/react": "^2.8.1",
+    "react-icons": "^4.11.0"
+  }
+}
