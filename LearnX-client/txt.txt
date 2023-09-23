@@ -1,1 +1,4 @@
 npm i axios chart.js react-chartjs-2 protected-route-react react-router-dom react-hot-toast react-icons react-redux @reduxjs/toolkit
+
+
+npm i bcrypt cloudinary cookie-parser cors dataurl dotenv express jsonwebtoken mongoose multer node-cron nodemailer validator

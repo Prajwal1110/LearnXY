@@ -13,7 +13,6 @@ const Sidebar = () => {
   <LinkButton Icon={RiAddCircleFill} text="Create Course" url={'createcourse'}/>
   <LinkButton Icon={RiEyeFill} text="Courses" url={'courses'}/>
 
-  <LinkButton Icon={RiUser3Fill} text="Users" url={'users'}/>
     </VStack>
   )
 }

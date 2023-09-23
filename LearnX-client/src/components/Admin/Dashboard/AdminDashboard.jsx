@@ -2,6 +2,7 @@ import { Text, Box, Grid, Heading, Stack, HStack, Progress } from '@chakra-ui/re
 import React from 'react';
 import Sidebar from './Sidebar';
 import { RiArrowDownLine, RiArrowUpLine } from 'react-icons/ri';
+import { LineChart } from './Chart';
 
 const DataBox = ({ title, qty, qtyPercentage, profit }) => (
   <Box
@@ -72,6 +73,8 @@ const AdminDashboard = () => {
             pt={['8','0']}
             ml={['0','16']}
           />
+
+          <LineChart />
         </Box>
 
         <Grid templateColumns={['1fr','2fr 1fr']}>

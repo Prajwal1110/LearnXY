@@ -17,6 +17,7 @@ import Sidebar from './components/Admin/Dashboard/Sidebar';
 import AdminDashboard from './components/Admin/Dashboard/AdminDashboard';
 import CreateCourses from './components/Admin/CreateCourse/CreateCourse';
 
+
 function App() {
 
   window.addEventListener("contextmenu",(e)=>{
@@ -40,6 +41,7 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/admin/dashboard' element={<AdminDashboard />} />
         <Route path='/admin/createcourse' element={<CreateCourses />} />  
+        
      </Routes>
           <Footer>
 

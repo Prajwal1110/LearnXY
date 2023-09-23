@@ -1,107 +1,111 @@
 import React, { useState } from 'react';
 import {
   Box,
-  Heading,
-  VStack,
-  FormControl,
-  FormLabel,
-  Input,
-  Textarea,
   Button,
+  Input,
+  Select,
+  VStack,
+  Container,
+  Image,
+  Heading,
 } from '@chakra-ui/react';
 
-function CreateCourses() {
-  const [courseInfo, setCourseInfo] = useState({
-    title: '',
-    description: '',
-    lectureFile: null,
-    quizFile: null,
-  });
+const CreateCourse = () => {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('');
+  const [createdBy, setCreatedBy] = useState('');
+  const [image, setImage] = useState('');
+  const [imagePrev, setImagePrev] = useState('');
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setCourseInfo({
-      ...courseInfo,
-      [name]: value,
-    });
+  const categories = [
+    "Fundamental Rights",
+    "Legal Rights and Procedures",
+    "Equality and Non-Discrimination",
+    "Education Rights",
+    "Safety and Protection",
+    "Health and Well-being",
+    "Privacy and Data Rights",
+  ];
+
+  const changeImageHandler = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onloadend = () => {
+      setImagePrev(reader.result);
+      setImage(file);
+    };
   };
 
-  const handleFileChange = (e) => {
-    const { name, files } = e.target;
-    setCourseInfo({
-      ...courseInfo,
-      [name]: files[0],
-    });
-  };
-
-  const handleSubmit = () => {
-    // Here you can send the courseInfo to your backend API to handle the upload and storage of lectures and quizzes.
-    // You would typically use a FormData object to send files to the server.
-    const formData = new FormData();
-    formData.append('title', courseInfo.title);
-    formData.append('description', courseInfo.description);
-    formData.append('lectureFile', courseInfo.lectureFile);
-    formData.append('quizFile', courseInfo.quizFile);
-
-    // Send formData to your server using an HTTP request (e.g., fetch or Axios).
-    // Handle the server response accordingly.
-
-    // After successful upload, you can clear the form fields.
-    setCourseInfo({
-      title: '',
-      description: '',
-      lectureFile: null,
-      quizFile: null,
-    });
+  const submitHandler = (e) => {
+    e.preventDefault();
+    // Add your form submission logic here
   };
 
   return (
-    <Box p={8}>
-      <Heading as="h1" size="2xl" mb={4}>
-        Create Course
-      </Heading>
-      <VStack spacing={4}>
-        <FormControl>
-          <FormLabel>Title</FormLabel>
+    <Container py="16">
+      <form onSubmit={submitHandler}>
+        <Heading
+          children="Create Course"
+          textTransform="uppercase"
+          my="16"
+          textAlign="center"
+        />
+        <VStack m="auto" spacing="8">
           <Input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Title"
             type="text"
-            name="title"
-            value={courseInfo.title}
-            onChange={handleInputChange}
+            focusBorderColor="purple.300"
           />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Description</FormLabel>
-          <Textarea
-            name="description"
-            value={courseInfo.description}
-            onChange={handleInputChange}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Lecture File</FormLabel>
           <Input
-            type="file"
-            name="lectureFile"
-            accept=".pdf,.doc,.docx,.ppt,.pptx"
-            onChange={handleFileChange}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Description"
+            type="text"
+            focusBorderColor="purple.300"
           />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Quiz File</FormLabel>
           <Input
-            type="file"
-            name="quizFile"
-            accept=".pdf,.doc,.docx"
-            onChange={handleFileChange}
+            value={createdBy}
+            onChange={(e) => setCreatedBy(e.target.value)}
+            placeholder="Creator Name"
+            type="text"
+            focusBorderColor="purple.300"
           />
-        </FormControl>
-        <Button colorScheme="purple" onClick={handleSubmit}>
-          Upload Course
-        </Button>
-      </VStack>
-    </Box>
+          <Select
+            focusBorderColor="purple.300"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="">Category</option>
+            {categories.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </Select>
+          <Input
+            accept="image/*"
+            required
+            id="chooseAvatar"
+            type="file"
+            focusBorderColor="purple.300"
+            onChange={changeImageHandler}
+          />
+          {imagePrev && (
+            <Image src={imagePrev} boxSize="64" objectFit="contain" />
+          )}
+          <Button isLoading={false} w="full" colorScheme="purple" type="submit">
+            Create
+          </Button>
+        </VStack>
+      </form>
+    </Container>
   );
-}
+};
 
-export default CreateCourses;
+export default CreateCourse;
