@@ -1,11 +1,11 @@
 {
   "name": "code",
   "version": "1.0.0",
-  "description": "",
+  "description": "This GitHub repository contains the source code and documentation for a gamified platform aimed at educating children in India about their rights and empowering them to stand up for themselves and others. The platform is designed to be interactive, engaging, and inclusive for children aged 8 to 16, regardless of their socio-economic background, gender, or other demographic factors.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,7 @@
   "dependencies": {
     "@chakra-ui/react": "^2.8.1",
     "react-icons": "^4.11.0"
-  }
+  },
+  "devDependencies": {},
+  "keywords": []
 }
