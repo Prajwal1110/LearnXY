@@ -3,18 +3,29 @@ import {
   Box,
   Heading,
   Button,
+  Text,
+  Input,
+  Stack,
 } from '@chakra-ui/react';
 
 function Lecture({ title, videoUrl }) {
-  // State to track whether the lecture is marked as completed
   const [isCompleted, setIsCompleted] = useState(false);
+  const [commentText, setCommentText] = useState('');
+  const [comments, setComments] = useState([]);
 
-  // Function to handle marking the lecture as completed
   const markAsCompleted = () => {
-    // In a real application, you would send an API request or update a database to mark the lecture as completed.
-    
-    // For this demonstration, we'll toggle the isCompleted state.
     setIsCompleted(!isCompleted);
+  };
+
+  const handleCommentChange = (e) => {
+    setCommentText(e.target.value);
+  };
+
+  const addComment = () => {
+    if (commentText.trim() !== '') {
+      setComments([...comments, commentText]);
+      setCommentText('');
+    }
   };
 
   return (
@@ -37,6 +48,24 @@ function Lecture({ title, videoUrl }) {
       >
         {isCompleted ? 'Completed' : 'Mark as Completed'}
       </Button>
+      <Heading as="h3" size="md" mt={4}>
+        Comments
+      </Heading>
+      {comments.map((comment, index) => (
+        <Text key={index} mt={2}>
+          {comment}
+        </Text>
+      ))}
+      <Stack direction="row" mt={2}>
+        <Input
+          placeholder="Add a comment..."
+          value={commentText}
+          onChange={handleCommentChange}
+        />
+        <Button onClick={addComment} colorScheme="teal">
+          Add Comment
+        </Button>
+      </Stack>
     </Box>
   );
 }

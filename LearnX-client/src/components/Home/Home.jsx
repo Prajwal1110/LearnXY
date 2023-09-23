@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-  Box,
-  Heading,
-  VStack,
-  Text,
-  Button,
-  Link,
-} from '@chakra-ui/react';
+import { Box, Heading, VStack, Text, Button } from '@chakra-ui/react';
+import { Link } from 'react-router-dom'; // Import Link from React Router
 import './Home.css';
 
 function Home() {
@@ -18,10 +12,14 @@ function Home() {
       alignItems='center'
       justifyContent='center'
     >
-      <VStack spacing={6} alignItems='center' 
-      width='100%' p={8} 
-      bg='rgba(255, 255, 255, 0.8)'
-       borderRadius='md'>
+      <VStack
+        spacing={6}
+        alignItems='center'
+        width='100%'
+        p={8}
+        bg='rgba(255, 255, 255, 0.8)'
+        borderRadius='md'
+      >
         <Heading as='h1' size='2xl' color='purple.600'>
           Welcome to LearnX
         </Heading>
@@ -31,6 +29,8 @@ function Home() {
         <Text fontSize='lg' textAlign='center' color='gray.800'>
           Join us on a journey of learning and discovery!
         </Text>
+        
+        {/* Link the button to the "Browse Courses" page */}
         <Link to='/courses'>
           <Button size='lg' colorScheme='purple'>
             Explore Now

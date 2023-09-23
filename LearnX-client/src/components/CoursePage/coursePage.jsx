@@ -48,11 +48,13 @@ function CoursePage() {
       <Box>
         {/* Render all lectures */}
         {lectures.map((lecture, index) => (
-          <Lecture
-            key={index}
-            title={lecture.title}
-            videoUrl={lecture.videoUrl}
-          />
+          <div key={index}>
+            <Lecture
+              title={lecture.title}
+              videoUrl={lecture.videoUrl}
+              // No need to pass comments or comment submission function here
+            />
+          </div>
         ))}
       </Box>
       <Box>
