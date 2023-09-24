@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import CoursePage from './../CoursePage/coursePage'; // Correct the import path
 import course1 from '../../assets/images/course1.jpeg';
 import course2 from '../../assets/images/course2.webp';
-import background from '../../assets/images/c.jpeg'; // Import the background image
+//nmpimport background from '../../assets/images/c.jpeg'; // Import the background image
 
 function Courses() {
   const [keyword, setKeyword] = useState('');
@@ -92,12 +92,12 @@ function Courses() {
       maxW="container.lg"
       paddingY={8}
       // Set the background image using inline CSS
-      style={{
-        backgroundImage: `url(${background})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '100vh', // Set the height to fill the viewport
-      }}
+      // style={{
+      //   backgroundImage: `url(${background})`,
+      //   backgroundSize: 'cover',
+      //   backgroundPosition: 'center',
+      //   height: '100vh', // Set the height to fill the viewport
+      // }}
     >
 
    <Heading m={8}>All Courses</Heading>
